@@ -1,11 +1,13 @@
 <?php
 
+require 'config.inc.php';
+
 $in = fopen('sxsw.csv', 'r');
 $out = fopen('sxsw-lastfm.csv', 'w');
 while ($data = fgetcsv($in, 0, "\t", '"')){
   list($artist, $url) = $data;
   $params = array(
-    'api_key' => 'ffae7cc247f46daec72f7b112ee4d353',
+    'api_key' => $config['lastfm-api-key'],
     'method' => 'artist.getinfo',
     'artist' => $artist,
     );
